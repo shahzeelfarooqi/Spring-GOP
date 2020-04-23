@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Leaflet CSS -->
+        <link rel="stylesheet" href="../Leaflet%20functions/leaflet.css"/>
+        <link rel="stylesheet" href="../Leaflet%20functions/leaflet.draw.css"/>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <!-- Our CSS -->
+        <link rel="stylesheet" href="styles.css">
+
+
+
+        <title>GOP's Secret Software Co.</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row" id="topLevelRow">
+                <div id="ControlPanel" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="row" id="topBar">
+                        <div class="dropdown" id="stateSelector">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                                Select State
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item disabled" href="#">Select a State</a>
+                                <a class = "dropdown-item" href = "javascript:showTheState(1); setGenerally(1); setElectionResults(1); setDemographicData(1);" >Pennsylvania</a>
+                                <a class = "dropdown-item" href = "javascript:showTheState(2); setGenerally(2); setElectionResults(2); setDemographicData(2);" >Virginia</a>
+                                <a class = "dropdown-item" href = "javascript:showTheState(3); setGenerally(3); setElectionResults(3); setDemographicData(3);" >Wisconsin</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabbable" id="navTabs">
+                        <ul id="tabLabels" class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#dataTab" data-toggle="tab">Data</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#errorTab" data-toggle="tab">Errors</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#commentTab" data-toggle="tab">Comments</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#toolsTab" data-toggle="tab">Tools</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="dataTab">
+                                <!--button onclick="loadDumby()">dumby</button-->
+                                <div class="accordion" id="dataAccordion">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    General
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#dataAccordion">
+                                            <div class="card-body">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Precinct:</th>
+                                                            <td id="precinctName">*precinct name*</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">District:</th>
+                                                            <td id="districtName">*district name*</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">State:</th>
+                                                            <td id="stateName">*state name*</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingTwo">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    Election Results
+                                                </button>
+                                            </h2>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#dataAccordion">
+                                            <div class="card-body">
+                                                <p class="noPadding">2016 Presidential Election</p>
+                                                <div class="splitBar row">
+                                                    <div id="2016PDem" class="democratBar" style="width: 50%"><span class="barLabel"><span id="2016PDemNum" class="barLabel"></span>%</span></div>
+                                                    <div id="2016PRep" class="republicanBar" style="width: 50%"><span class="barLabel"><span id="2016PRepNum" class="barLabel"></span>%</span></div>
+                                                </div>
+                                                <p class="noPadding">2016 Congressional Election</p>
+                                                <div class="splitBar row">
+                                                    <div id="2016CDem" class="democratBar" style="width: 50%"><span class="barLabel"><span id="2016CDemNum"></span>%</span></div>
+                                                    <div id="2016CRep" class="republicanBar" style="width: 50%"><span class="barLabel"><span id="2016CRepNum"></span>%</span></div>
+                                                </div>
+                                                <p class="noPadding">2018 Congressional Election</p>
+                                                <div class="splitBar row">
+                                                    <div id="2018CDem" class="democratBar" style="width: 50%"><span class="barLabel"><span id="2018CDemNum"></span>%</span></div>
+                                                    <div id="2018CRep" class="republicanBar" style="width: 50%"><span class="barLabel"><span id="2018CRepNum"></span>%</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingThree">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    Demographics
+                                                </button>
+                                            </h2>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#dataAccordion">
+                                            <div class="card-body">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Population:</th>
+                                                            <td id="totalPopulation">*population value*</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Sex:</th>
+                                                            <td><table class="table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th scope="row">Male:</th>
+                                                                        <td id="malePopulation">*male population*</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Female:</th>
+                                                                        <td id="femalePopulation">*female population*</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                                </table></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Race:</th>
+                                                            <td><table class="table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th scope="row">White:</th>
+                                                                        <td id="whitePopulation">*white population*</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Black:</th>
+                                                                        <td id="blackPopulation">*black population*</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Hispanic:</th>
+                                                                        <td id="hispanicPopulation">*hispanic population*</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">American Indian and Alaska Native:</th>
+                                                                        <td id="nativePopulation">*native population*</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Asian:</th>
+                                                                        <td id="asianPopulation">*Asian population*</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Native Hawaiian and Other Pacific Islander:</th>
+                                                                        <td id="islandPopulation">*island population*</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Other:</th>
+                                                                        <td id="otherRacePopulation">*other population*</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                                </table></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <p>Source: Census.gov</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="errorTab">
+                                <p>
+                                    This is the errors tab	
+                                </p>
+                                <div id = "issue_pan">
+
+                                    <div id = "issue_sample" style = "length = 100%;">
+                                        <a href = "javascript:fixCrossedEdges(1,2)" class = "errors_word">self intersected 1</a>
+                                        <button type = "submit" class="btn btn-primary " id = "merge"> edit</button> 
+                                        <button type = "submit" class="btn btn-primary"> delete</button> 
+
+                                    </div>
+                                    <div id = "issue_sample" style = "length = 100%;">
+                                        <a href = "#" class = "errors_word">self intersected 2</a>
+                                        <button type = "submit" class="btn btn-primary"> edit</button> 
+                                        <button type = "submit" class="btn btn-primary"> delete</button> 
+
+                                    </div>
+                                    <div id = "issue_sample" style = "length = 100%;">
+                                        <a href = "#" class = "errors_word">multipolygon 1</a>
+                                        <button type = "submit" class="btn btn-primary"> edit</button> 
+                                        <button type = "submit" class="btn btn-primary"> delete</button> 
+
+                                    </div>
+                                    <div id = "issue_sample" style = "length = 100%;">
+                                        <a href = "#" class = "errors_word">multilpolygon 2</a>
+                                        <button type = "submit" class="btn btn-primary"> edit</button> 
+                                        <button type = "submit" class="btn btn-primary"> delete</button> 
+
+                                    </div>
+                                    <div id = "issue_sample" style = "length = 100%;">
+                                        <a href = "#" class = "errors_word">open border 1</a>
+                                        <button type = "submit" class="btn btn-primary"> edit</button> 
+                                        <button type = "submit" class="btn btn-primary"> delete</button> 
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="commentTab">
+                                <div id = "comment_container">
+                                    <div id = "comments_window" style = "overflow : scroll; max-height: 200px; height:200px;"></div>
+                                    <form action="#">
+                                        <label for="label"></label>
+                                        <textarea id = "commentBox" rows = "3" placeholder="Enter your comment" style="width: 100%" required></textarea>
+                                        <textarea id = "commentUserBox" rows = "1" placeholder="User Name" style="width: 100%"></textarea>
+                                        <button id = "comment_button" class="btn btn-primary btn-block" >Comment</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="toolsTab"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="MapPanel" class="col-md-8 col-sm-8 col-xs-12">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+
+        <!----------------------------- SCRIPTS --------------------------->
+
+        <!-- Leaflet scripts, temporarily removed
+<script src="../Leaflet%20functions/leaflet-src.js"></script>
+<script src="../Leaflet%20functions/Leaflet.draw.js"></script>
+<script src="../Leaflet%20functions/Leaflet.Draw.Event.js"></script>
+<script src="../Leaflet%20functions/Toolbar.js"></script>
+<script src="../Leaflet%20functions/Tooltip.js"></script>
+<script src="../Leaflet%20functions/GeometryUtil.js"></script>
+<script src="../Leaflet%20functions/LatLngUtil.js"></script>
+<script src="../Leaflet%20functions/LineUtil.Intersect.js"></script>
+<script src="../Leaflet%20functions/Polygon.Intersect.js"></script>
+<script src="../Leaflet%20functions/Polyline.Intersect.js"></script>
+<script src="../Leaflet%20functions/TouchEvents.js"></script>
+<script src="../Leaflet%20functions/DrawToolbar.js"></script>
+<script src="../Leaflet%20functions/Draw.Feature.js"></script>
+<script src="../Leaflet%20functions/Draw.SimpleShape.js"></script>
+<script src="../Leaflet%20functions/Draw.Polyline.js"></script>
+<script src="../Leaflet%20functions/Draw.Marker.js"></script>
+<script src="../Leaflet%20functions/Draw.Circle.js"></script>
+<script src="../Leaflet%20functions/Draw.CircleMarker.js"></script>
+<script src="../Leaflet%20functions/Draw.Polygon.js"></script>
+<script src="../Leaflet%20functions/Draw.Rectangle.js"></script>
+<script src="../Leaflet%20functions/EditToolbar.js"></script>
+<script src="../Leaflet%20functions/EditToolbar.Edit.js"></script>
+<script src="../Leaflet%20functions/EditToolbar.Delete.js"></script>
+<script src="../Leaflet%20functions/Control.Draw.js"></script>
+<script src="../Leaflet%20functions/Edit.Poly.js"></script>
+<script src="../Leaflet%20functions/Edit.SimpleShape.js"></script>
+<script src="../Leaflet%20functions/Edit.Rectangle.js"></script>
+<script src="../Leaflet%20functions/Edit.Marker.js"></script>
+<script src="../Leaflet%20functions/Edit.CircleMarker.js"></script>
+<script src="../Leaflet%20functions/Edit.Circle.js"></script>
+<script src = "../Leaflet%20functions/Dropdown.Controler.js"></script>
+<script src = "../Leaflet%20functions/addShapeFromJSON.js"></script>
+<script src = "../Leaflet%20functions/saveShapeToJSON.js"></script>
+-->
+
+        <!-- ajax, temporarily removed
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.1.min.js"></script>
+-->
+
+        <!-- random stuff WE made, temporarily removed
+<script src = "loadGeoJsonPolygons.js"></script>
+<script src = "DropdownController.js"></script>
+<script src = "precincts.js"></script>
+<script src = "addDummyErrors.js"></script>
+-->
+
+        <!-- mega script, removed
+<script>   
+var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+osm = L.tileLayer(osmUrl, { maxZoom: 18, attribution: osmAttrib }),
+map = new L.Map('map', { center: new L.LatLng(40, -73), zoom: 4 }),
+drawnItems = L.featureGroup().addTo(map);
+
+L.control.layers({
+'osm': osm.addTo(map),
+//        "google": L.tileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {
+//            attribution: 'google'
+//        })
+
+}, { 'drawlayer': drawnItems }, { position: 'topleft', collapsed: false }).addTo(map);
+map.addControl(new L.Control.Draw({
+edit: {
+featureGroup: drawnItems,
+poly: {
+allowIntersection: false
+}
+},
+draw: {
+polygon: {
+allowIntersection: false,
+showArea: true
+}
+}
+}));
+map.on(L.Draw.Event.CREATED, function (event) {
+var layer = event.layer;
+
+drawnItems.addLayer(layer);
+});
+
+
+//addShapeFromJSON();
+$("#merge").click(function() {
+console.log("he is seeing");
+var layerGroup = L.LayerGroup([polygon]);
+var id = layerGroup.getLayer();
+consloe.log("layer : " + id);
+//            layerGroup.eachLayer(function(laye1r) { 
+//                                                 console.log(" id " + laye1r._polygonId)});
+
+});
+//var myLayer = dosome("statescomb.geojson");
+//dosome("tl_2016_51_cousub.json");
+//var myLayer2 = dosome("Pennsylvania House Districts Boundaries.geojson");
+
+
+//document.getElementById('export').onclick = saveShapeToJSON();
+
+document.getElementById('comment_button').onclick = function(){
+var text = document.getElementById("commentBox").value;
+
+var userName = document.getElementById("commentUserBox").value;
+var element = document.getElementById("comments_window");    
+var para = document.createElement("p");
+var node = document.createTextNode(userName + " : " + text);
+para.appendChild(node);
+element.appendChild(para);
+
+document.getElementById("commentBox").value = " ";
+document.getElementById("commentUserBox").value = " ";
+
+}
+
+</script>
+-->
+
+        <!-- bootstrap stuff -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <!-- Our scripts -->
+
+        <!--precincts.js removed
+<script src="precincts.js"></script>
+-->
+        <script src="main.js"></script>
+    </body>
+</html>

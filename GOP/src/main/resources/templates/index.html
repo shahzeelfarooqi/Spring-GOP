@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<head>
+    <meta charset= "UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name = "viewport" content="width = device-width, initial scale = 1">
+    <title>TEST 416 GUI</title>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+.jumbotron{
+    background-color: bisque;
+    color:darkred
+}
+.btn-default{
+    color:black;
+    background-color:white;
+    border: black;
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>TEST 416 GUI</h1>
+    </div>
+
+    <div class="jumbotron">
+        <p>This is my test GUI demo for 308. There is a lot of work that needs to be done and I really need to pickup the slack ASAP.</p>
+        <p>
+            <a href="#" class="btn btn-default btn-lg" role="button">More Info</a>
+
+            <button type="submit" class="btn btn-info" role="button">Button</button>
+            <input type="button" value="Info" class="btn btn-danger">
+            <button type="submit" class="btn-primary btn-sm" role="button">Primary</button>
+            <button type="submit" class="btn btn-success btn-xs" role="button">Success</button>
+            <button type="submit" class="btn btn-warning btn-lg" role="button">Warning</button>
+            <button type="submit" class="btn btn-lg">Link</button>
+
+            <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary</button>
+            <a href="#" class="btn btn-primary btn-lg disabled" role ="button">Link</a>
+
+        <div class = "btn-group btn-group-lg" role="group">
+            <button type="button" class="btn btn-default">Exceed</button>
+            <button type="button" class="btn btn-default">Wither</button>
+        </div>
+        </p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <h2>Column 1</h2>
+            THIS IS SOME SAMPLE TEXT TO SEE IF OUR BOOTSRAP KNOWLEDGE IS WORKING
+            <h3>Column 2</h3>
+            HANG IN THERE BUDDY. WE WILL MAKE IT
+            <h4>Column 3</h4>
+            JUST KEEP SPENDING A FEW HOURS A DAY
+            <h5>Column 4</h5>
+            IT WILL START COMING TOGETHER. YOU WILL NOT FAIL
+            <p th:text = "${message}">This is the message</p>
+        </div>
+
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

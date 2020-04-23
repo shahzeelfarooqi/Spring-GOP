@@ -1,0 +1,120 @@
+div {
+    border-style: solid;
+    border: 0;
+    border-width: thin;
+}
+
+#ControlPanel {
+	height: 100vh;
+    overflow : scroll;
+}
+
+
+#map{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.container-fluid {
+    height: 100vh;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(61,105,155,0.7402311266303396) 100%);
+}
+
+.jumbotron{
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    position: absolute;
+    background-color: bisque;
+    color:darkred;
+}
+.btn-default{
+    color:black;
+    background-color:white;
+    border: black;
+
+}
+
+.noPadding {
+	padding-left: 0;
+	padding-right: 0;
+}
+.dropdown{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border: white;
+}
+#issue_pan{
+width:100%; /* or whatever width you want. */
+   max-width:auto; /* or whatever width you want. */
+    height: 80%;
+    max-height: 100%;
+   display: inline-block;
+    overflow : scroll;
+}
+#comment_container{
+    width : 100%;
+}
+#myTextArea{
+    width: 100%;
+    height: 100px;
+    max-height: 150px;
+    padding:0;
+    border: 0;
+}
+.my_but{
+    float : right;
+}
+#export {
+            position: absolute;
+            top:50px;
+            right:10px;
+            z-index:100;
+            background:white;
+            color:black;
+            padding:6px;
+            border-radius:4px;
+            font-family: 'Helvetica Neue';
+            cursor: pointer;
+            font-size:12px;
+            text-decoration:none;
+            
+        }
+
+.splitBar {
+	padding: 0;
+	height: inherit;
+	background-color: lightgray;
+	text-align: center;
+}
+.democratBar {
+	background-color: blue;
+	height: 100%;
+	float: left;
+}
+.republicanBar {
+	background-color: red;
+	height: 100%;
+	float: left;
+}
+
+.label {
+	margin: 0;
+}
+
+.barLabel {
+	color: white;
+}
+.sr-only{
+    background-color: aqua;
+}
+#errorTab{
+    height: 80%;
+    max-height: 100%;
+}
+.errors_word{
+    width : 70px;
+    max-width: 70px;
+}
